@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}home {% endblock %}
+{% block body %}
+
+<div class="container">
+
+    <h1 class="mt-4 text-center ">CRUD Opration using Django</h1>
+    <a href="add"><button type="button" class="btn btn-primary">Add</button></a>
+    <table class="table table-bordered border-primary mt-3 text-center">
+        <thead class="text-uppercase ">
+          <td>Sno</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Branch</td>
+          <td>Action</td>
+        </thead>
+        <tbody>
+          {% if msg %}
+           <h1>{{msg}}</h1>
+          {% else %}
+          {% for i in result %}
+          <tr>
+            <td>{{i.stu_id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.branch}}</td>
+            <td>
+           
+            <a href="{% url 'delete' i.stu_id %}"><button class="btn btn-danger ">delete</button></a>
+            <a href="{% url 'update' i.stu_id %}"><button class="btn btn-primary ">update</button></a>
+          </td>
+          </tr> 
+        </tbody>
+        {% endfor %}
+        {% endif %}
+      </table>
+</div>
+
+{% endblock body %}
+
+
+

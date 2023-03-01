@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}home {% endblock %}
+
+
+{% block  body%}
+
+<div class="container border border-2 border-primary mt-5  a">
+    <h1 class="text-center">Update the Details</h1>
+
+    <form action="/update/{{edit.stu_id}}/" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" value="{{edit.name}}" name="name" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" value="{{edit.email}}"
+                id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="inputState" class="form-label">Branch</label>
+            <select id="inputState" class="form-select"  name="branch">
+                <option> {{edit.branch}} </option>
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="Civil">Civil</option>
+            </select>
+        </div>
+       <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit </button>
+       </div>
+    </form>
+</div>
+
+
+{% endblock body %}
